@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<title>Danielle_Exercise3</title>
+		<style type="text/css">
+			body {
+				background-color:whitesmoke;
+			}
+
+			.TxtBox {
+				font-family: Verdana, Arial, Helvetica;
+				font-size: 10pt;
+				color: black;
+				height: 19px;
+				background-color: white;
+				border: 1px solid grey;
+			}
+			.BtnButton {
+				font-family: Verdana, Arial, Helvetica;
+				font-size: 10pt;
+				color: black;
+				height: 24px;
+				cursor: pointer;
+			}
+		</style>
+		<script language="JavaScript" type="text/JavaScript">
+			
+			function myFunctionValidateForm() {
+
+                var inputBoxes = document.querySelectorAll("input[type='text']");
+
+              
+                for(var index=0;index<inputBoxes.length;index++){
+                    if(inputBoxes[index].value==""){
+                        inputBoxes[index].setAttribute("style","background-color:pink;");
+                    } else {
+                        inputBoxes[index].setAttribute("style","background-color:white;");
+                    }
+                }
+
+                return false;
+            }
+
+            function myFunctionValidateField(selectedInput){
+               
+                if(selectedInput.value!==""){
+                    selectedInput.setAttribute("style","background-color:white;");
+                }
+            }
+		
+			function myFunctionCheck() {
+               
+                if(document.getElementById("province").value !== "ON" ){
+                    alert("Only Ontario Customers are able to be Members");
+                    document.getElementById("myCheck").checked = false;
+                }
+            }
+
+            function myFunctionChange(){
+                if(document.getElementById("myCheck").checked = false && 
+                    document.getElementById("province").value !== "ON" ){
+                        alert("Only Ontario Customers are able to be Members");
+                    document.getElementById("myCheck").checked = false;  
+                }
+            }
+
+		</script>   
+	</head>
+    
+    
+    <body>
+        <form onsubmit="return myFunctionValidateForm();" action="#">
+            <div>First Name</div>
+            <input type="text" id="firstName" name="firstName" class="TxtBox" style="width:300px" maxlength = "50" value=""  onkeydown="myFunctionValidateField(this)" />
+            <br /><br />
+            <div>Last Name</div>
+            <input type="text" id="lastName" name = "lastName" class="TxtBox" style="width:300px"  maxlength = "50" value="" onkeydown="myFunctionValidateField(this)"/>
+            <br /><br />
+            <div>Address</div>
+            <input type="text" id="address" name = "address" class="TxtBox" style="width:300px" maxlength = "50" value="" onkeydown="myFunctionValidateField(this)"/>
+            <br /><br />
+            <div>City</div>
+            <input type="text" id="city" name = "city" class="TxtBox" style="width:200px" maxlength = "40" value="" onkeydown="myFunctionValidateField(this)"/>
+            <br /><br />
+            <div>Province</div>
+            <select id="province" onchange="myFunctionChange()" >
+                <option value="BC"selected="selected">British Columbia</option>
+                <option value="ON">Ontario</option>
+                <option value="SK">Saskatchewan</option>
+                <option value="MB">Manitoba</option>
+                <option value="QC">Quebec</option>
+                <option value="NS">Nova Scotia</option>
+                <option value="PE">Pr Edward I</option>
+                <option value="NL">New Foundland</option>
+                <option value="NB">New Brunswick</option>
+                <option value="YT">Yukun</option>
+                <option value="NT">Northwest Territories</option>
+                <option value="NU">Nunavut</option>
+
+            </select>
+            <br /><br />     
+            <div>Postal Code</div>
+            <input type="text" id="postalCode" name="postalCode" class="TxtBox" style="width:100px" maxlength = "7"  value="" onkeydown="myFunctionValidateField(this)" />
+            <br /><br />
+            <div>Telephone</div>
+            <input type="text" id="phone" name = "phone" class="TxtBox" style="width:100px" maxlength = "12" value="" onkeydown="myFunctionValidateField(this)" />
+            <br /><br />
+            <div> <input type="checkbox" id="myCheck"  onclick="myFunctionCheck()" />
+                Is Member?</div> 
+            <br /><br />
+            <input type="submit" id="submit" class="BtnButton" value="Submit"/>
+        </form>
+		
+
+	</body>
+</html>
+
+
+
+
+
+
